@@ -1,0 +1,16 @@
+.box {
+    display: grid;
+    align-self: center;
+    width: 40%;
+    height: 250px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "allquote"
+    "manage";
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    justify-content: center;
+}

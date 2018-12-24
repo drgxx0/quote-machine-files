@@ -1,0 +1,26 @@
+.quotes {
+    display:grid;
+    margin: 15px;
+    height: 80%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "quote quote"
+    ". author";
+    justify-content: center;
+}
+
+.quotes p {
+    margin: 10px;
+    grid-area: quote;
+    justify-self: center;
+    font-weight: bold;
+}
+
+.author {
+    grid-area: author;
+    display: flex;
+    justify-self: flex-end;
+    align-self: end;
+    margin-right: 15px;
+}
