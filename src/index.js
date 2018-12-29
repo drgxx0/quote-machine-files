@@ -5,12 +5,18 @@ import App from "Container/App";
 
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { Provider } from "react-redux";
+
+import createSagaMiddleware from 'redux-saga'
+
 import thunk from "redux-thunk";
 
 import quoteReducer from "store/reducer/quoteReducer";
 import UIReducer from "store/reducer/UIRedurcer";
 
+import quoteSaga from 'store/saga/quoteSaga'
+
 import * as serviceWorker from "./serviceWorker";
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,10 +25,14 @@ const rootReducer = combineReducers({
   color: UIReducer
 });
 
+const sagaMiddleware = createSagaMiddleware()
+
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+
+sagaMiddleware.run(quoteSaga)
 
 const app = (
   <Provider store={store}>
